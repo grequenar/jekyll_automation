@@ -1,0 +1,17 @@
+# Example usage: ansible-playbook -i ansiblecontroller playbooks/post_generator.yml -vvv --extra-vars "git_pass=*************"
+# This playbook checks the syntax of the dictionary
+---
+- name: site generator
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  tasks:
+  - include_vars:
+      file: /var/tmp/ans_documentation_v2/_data/ans_doc.yml
+
+  - name: crear posts en base a entradas de diccionario
+    include_role:
+      name: jekyll_templates
+    loop: "{{ ansible_objects }}"
+ 

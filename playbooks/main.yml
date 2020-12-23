@@ -1,0 +1,12 @@
+---
+# Example usage: ansible-playbook -i ansiblecontroller playbooks/dict_check.yml -vvv --extra-vars "git_pass=*************"
+# This playbook (main playbook que incluye las dos ejecuciones)
+- name: site generator
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  tasks:
+  - include_vars:
+      file: /home/iberdrola_installer/poc_files_v2/ans_documentation_v2/_data/ans_doc.yml
+

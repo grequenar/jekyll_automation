@@ -1,0 +1,8 @@
+---
+- name: inicializar resultado
+  set_fact:
+    resultado: []
+
+- name: comprobar ficheros yaml
+  include_tasks: yaml_validation.yml 
+  loop: "{{ files_list_yml.files }}"

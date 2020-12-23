@@ -1,0 +1,25 @@
+---
+- name: define yamllint command
+  set_fact:
+    config_checks: "{rules: {document-start: {present: true}, new-line-at-end-of-file: enable, truthy: {allowed-values: ['true','false']}, colons: {max-spaces-before: 0, max-spaces-after: 1}}}"
+
+- name: rule validation yamllint
+  shell: 'yamllint -d "{{ config_checks }}" {{ item.path }}'
+  ignore_errors: true
+  register: result_validation_yamllint
+
+- name: check yamllint
+  set_fact:
+    resultado: "{{ resultado + [result_validation_yamllint] }}"
+  when: result_validation_yamllint.rc != 0
+
+- name: rules validation ansible-lint
+  shell: 'ansible-lint -t 103 -t 205 -t 206 -t 504 -t 601 {{ item.path }}'
+  ignore_errors: true
+  register: result_validation_ansiblelint
+
+- name: check ansible-lint
+  set_fact:
+    resultado: "{{ resultado + [result_validation_ansiblelint] }}"
+  when: result_validation_ansiblelint.rc != 0
+ 
