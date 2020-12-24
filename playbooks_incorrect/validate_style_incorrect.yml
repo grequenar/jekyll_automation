@@ -1,0 +1,23 @@
+- name: validate style of yaml files
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: search of yaml files
+    find:
+      paths: /home/iberdrola_installer/poc_files_v2/jekyll_automation
+      recurse: yes
+      patterns:  '*.yml,*.yaml'
+    register: files_list_yml
+
+  - name: include roles
+    include_role:
+      name: roles/yaml_style
+
+  - name: print name result
+    assert:
+      that: not resultado
+      success_msg: "El resultado de las validaciones es correcto."
+      fail_msg: "El resultado de las validaciones es incorrecto:\n {{ resultado }}"
+

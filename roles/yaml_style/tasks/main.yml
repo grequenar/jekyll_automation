@@ -1,0 +1,8 @@
+---
+- name: init the variable resultado
+  set_fact:
+    resultado: []
+
+- name: launch validation against all yaml files found
+  include_tasks: yaml_rules.yml 
+  loop: "{{ files_list_yml.files }}"
