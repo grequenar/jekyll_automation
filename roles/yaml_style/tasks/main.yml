@@ -1,4 +1,8 @@
 ---
+- name: ansible-lint is installed
+  pip:
+    name: ansible-lint
+
 - name: init the variable resultado
   set_fact:
     resultado: []

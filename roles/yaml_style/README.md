@@ -1,9 +1,3 @@
---- 
-layout: post 
-title: yaml_style role
-permalink: /ans/ibe/linux/p/ans_ibe_linux_r_yaml_style.html
---- 
-
 ## Author
 
 Gloria Requena
@@ -28,8 +22,7 @@ None
 
 | Variable | Required | Default | Comments |
 | -------- | -------- | ------- | -------- |
-| `dir_style_check` | Yes | ` `
- | Set as extra var during runtime the path of the directory where the search of yaml files will be performed |
+| `dir_style_check` | Yes | ` ` | Set as extra var during runtime the path of the directory where the search of yaml files will be performed |
 
 Other variables whose value is set during the execution:
 - `files_list_yml`: array with the paths of the yaml files found in the directory. 

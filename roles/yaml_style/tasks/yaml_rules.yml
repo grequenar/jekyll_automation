@@ -1,10 +1,10 @@
 ---
 - name: define yamllint command
   set_fact:
-    config_checks: "{rules: {document-start: {present: true}, new-line-at-end-of-file: enable, truthy: {allowed-values: ['true','false']}, colons: {max-spaces-before: 0, max-spaces-after: 1}}}"
+    yaml_rules: "{rules: {document-start: {present: true}, new-line-at-end-of-file: enable, truthy: {allowed-values: ['true','false']}, colons: {max-spaces-before: 0, max-spaces-after: 1}}}"
 
 - name: validation of yamllint rules
-  shell: 'yamllint -d "{{ config_checks }}" {{ item.path }}'
+  shell: 'yamllint -d "{{ yaml_rules }}" {{ item.path }}'
   ignore_errors: true
   register: result_validation_yamllint
 

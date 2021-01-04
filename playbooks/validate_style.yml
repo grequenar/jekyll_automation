@@ -21,6 +21,6 @@
   - name: print name result
     assert:
       that: not resultado
-      success_msg: "El resultado de las validaciones es correcto."
-      fail_msg: "El resultado de las validaciones es incorrecto:\n {{ resultado }}"
+      success_msg: "The result of the style validation is correct. No errors found."
+      fail_msg: "The result of the style validation is incorrect. The following errors were found:\n {{ resultado }}"
 
