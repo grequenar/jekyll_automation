@@ -6,10 +6,14 @@
   connection: local
   gather_facts: false
 
+  pre_tasks:
+  - include_vars:
+      dir: ../vars
+
   tasks:
   - name: search of yaml files
     find:
-      paths: "/home/iberdrola_installer/poc_files_v2/jekyll_automation/{{ dir_style_check }}"
+      paths: "{{ repo_path }}/{{ dir_style_check }}"
       recurse: true
       patterns: '*.yml,*.yaml'
     register: files_list_yml

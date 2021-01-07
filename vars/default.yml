@@ -4,5 +4,8 @@ git_pass: ""
 dict_repo: 
 site_repo: "https://{{ git_username }}:{{ git_pass }}@github.com/grequenar/ans_documentation_v2.git"
 
+# yaml_style role
+dir_style_check: playbooks
+
 # check_dictionary role
 dict_file: ans_doc_dictionary_correct.yml
