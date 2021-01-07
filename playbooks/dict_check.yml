@@ -1,30 +1,34 @@
 # Example usage: ansible-playbook -i ansiblecontroller playbooks/dict_check.yml -vvv --extra-vars "git_pass=***"
-# This playbook checks the syntax of the dictionary
+# This playbook checks the format of the values assigned to the different keys for each item of the dictionary
 ---
 - name: check
   hosts: localhost
   connection: local
   gather_facts: false
+  
   pre_tasks:
-  - name: clone del diccionario
-    git:
-      repo: "https://github.com/grequenar/ans_documentation_v2.git"
-      dest: /var/tmp/ans_documentation_v2
-
-  tasks:
-  - name: comprobar sintaxis diccionario
-    shell: ansible-lint /var/tmp/ans_documentation_v2/_data/ans_doc.yml
-   
+# - name: clone of the repo that contains the dictionary
+#   git:
+#     repo: "https://github.com/grequenar/ans_documentation_data.git"
+#     dest: "{{ dict_path }}"
+  
   - include_vars:
-      file: /var/tmp/ans_documentation_v2/_data/ans_doc.yml
+      dir: ../vars
+  
+  tasks:
+  - name: validate yaml syntax of dictionary
+    shell: ansible-lint "{{ dict_path }}/{{ dict_file }}"
  
-  - name: comprobar valores diccionario
-    include_role:
-      name: check_dictionary
+  - include_vars:
+      file: "{{ dict_path }}/{{ dict_file }}"
 
-  - name: print name result
+  - name: validate format of dictionary values
+    include_role:
+      name: roles/check_dictionary
+
+  - name: print result
     assert:
       that: not resultado
-      success_msg: "El resultado de las validaciones es correcto"
-      fail_msg: "El resultado de la ejecución es incorrecto:\n {{ resultado }}"
+      success_msg: "The result of the format validation is correct."
+      fail_msg: "The result of the format validation is incorrect. The following errors were found:\n {{ resultado }}"
 

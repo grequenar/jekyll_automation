@@ -1,5 +1,5 @@
 ---
-- name: inicialización variable resultado
+- name: init the variable resultado
   set_fact:
     resultado: []
     name: name
@@ -10,6 +10,6 @@
     date: date
     tags: tags
 
-- name: comprobar valores diccionario
-  include_tasks: validate_parameters_of_dictionary.yml
+- name: check values of all dictionary entries
+  include_tasks: format_validation.yml
   loop: "{{ ansible_objects }}" 
