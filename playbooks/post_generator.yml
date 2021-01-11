@@ -6,12 +6,16 @@
   connection: local
   gather_facts: false
   
+  pre_tasks: 
+  - include_vars:
+      dir: ../vars
+  
   tasks:
   - include_vars:
-      file: /var/tmp/ans_documentation_v2/_data/ans_doc.yml
+      file: "{{ dict_path }}/{{ dict_file }}"
 
   - name: crear posts en base a entradas de diccionario
     include_role:
-      name: jekyll_templates
+      name: roles/jekyll_templates
     loop: "{{ ansible_objects }}"
  
