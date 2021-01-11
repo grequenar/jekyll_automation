@@ -1,0 +1,11 @@
+---
+- name: posts creation
+  template:
+    src: posts.j2
+    #dest: "{{ site_path }}/_posts/{{ item.date }}-{{ item.name }}.md"
+    dest: "/tmp/ans_documentation_v2/_posts/{{ item.date }}-{{ item.name }}.md"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    force: true
+  loop: "{{ ansible_objects }}"
+

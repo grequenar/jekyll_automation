@@ -1,0 +1,21 @@
+---
+#- name: delete all existing posts
+#  file:
+    #path: "{{ site_path }}/_posts/*"
+    #    path: /tmp/ans_documentation_v2/_posts/*
+    #    state: absent
+
+- name: Register all files in the posts directory
+  find:
+    paths: /tmp/ans_documentation_v2/_posts
+    patterns: 
+      - "*.md" 
+      - "*.markdown" 
+      - "*.html"
+  register: files_to_delete
+
+- name: Remove all existing posts but not the directory
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"

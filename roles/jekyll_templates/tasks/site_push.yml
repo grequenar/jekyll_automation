@@ -1,0 +1,11 @@
+- name: git push of new content of site
+  git_acp:
+    path: "/tmp/ans_documentation_v2"
+    branch: master
+    comment: "Catalogue content update"
+    remote: origin
+    add: [ "." ]
+    mode: ssh
+    url: "git@github.com:grequenar/ans_documentation_v2"
+    user_name: grequenar
+    user_email: grequena@redhat.com
