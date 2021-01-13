@@ -6,8 +6,8 @@
   include_tasks: site_post_building.yml
   # loop: "{{ ansible_objects }}"
 
-- name: push new content to new branch of repository
-  include_tasks: site_push.yml 
+  #- name: push new content to new branch of repository
+  #include_tasks: site_push.yml 
 
 
 

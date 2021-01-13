@@ -9,3 +9,5 @@
     url: "git@github.com:grequenar/ans_documentation_v2"
     user_name: grequenar
     user_email: grequena@redhat.com
+
+# el push funciona pero no se si previamente habria que hacer un git rm de los posts en el repo de git, en vez de borrarlos solo en local?
