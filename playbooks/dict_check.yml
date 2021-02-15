@@ -1,5 +1,7 @@
-# Example usage: ansible-playbook -i ansiblecontroller playbooks/dict_check.yml -vvv --extra-vars "git_pass=***"
+# Example usage: ansible-playbook playbooks/dict_check.yml -vvv --extra-vars "git_pass=***" "dict_file=file.yml"
 # This playbook checks the format of the values assigned to the different keys for each item of the dictionary
+# The dict_file variable will be passed as extra var for POC purposes in order to show the outcome of an incorrect dictionary. 
+# This functionality will be disabled at use as there will only exist one dictionary file.
 ---
 - name: check
   hosts: localhost
@@ -7,6 +9,9 @@
   gather_facts: false
   
   pre_tasks:
+# Duda: hay que obtener el diccionario con los cambios propuestos por el developer para comprobar si son corrector
+# No obstante, esto debe suceder antes del merge (no puede haber merge si está mal)
+# Entonces esto es un clone??? 
 # - name: clone of the repo that contains the dictionary
 #   git:
 #     repo: "https://github.com/grequenar/ans_documentation_data.git"
@@ -32,3 +37,5 @@
       success_msg: "The result of the format validation is correct."
       fail_msg: "The result of the format validation is incorrect. The following errors were found:\n {{ resultado }}"
 
+# If no errors where identified, the merge of the pull request to the repo that contains the dictonary should be allowed
+# This event triggers site generation

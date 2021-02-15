@@ -28,3 +28,4 @@
       success_msg: "The result of the style validation is correct. No errors found."
       fail_msg: "The result of the style validation is incorrect. The following errors were found:\n {{ resultado }}"
 
+
