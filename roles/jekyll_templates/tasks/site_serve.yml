@@ -1,4 +1,6 @@
 - name: serve updated site to create new html content
-  shell: jekyll-serve --host "{{ myip }}" 
-  args:
-    chdir: /tmp/ans_documentation_v2/
+    shell: bundle exec jekyll build --destination "{{ site_built_path }}"
+    args:
+#     chdir: "{{ site_path }}"
+      chdir: /tmp/ans_documentation_v2/
+
