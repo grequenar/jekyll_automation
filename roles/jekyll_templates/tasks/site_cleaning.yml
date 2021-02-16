@@ -1,6 +1,7 @@
 ---
 - name: Register all files in the posts directory
   find:
+#   paths: "{{ site_path }}"
     paths: /tmp/ans_documentation_v2/_posts
     patterns: 
       - "*.md" 

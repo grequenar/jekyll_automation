@@ -1,4 +1,4 @@
 - name: serve updated site to create new html content
-  shell: jekyll-serve --host 192.168.122.11 
+  shell: jekyll-serve --host "{{ myip }}" 
   args:
     chdir: /tmp/ans_documentation_v2/

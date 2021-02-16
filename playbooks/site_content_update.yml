@@ -20,8 +20,12 @@
       # dest: "{{ site_path }}"
       dest: /tmp/ans_documentation_v2 
 
+  - name: override data base of site with new dictionary
+    src: "{{ dict_path }}/{{ dict_file }}"
+    dest: "{{ site_path }}/_data/ans_dictionary.yml" 
+    force: yes
+
   - name: create new site content
     include_role:
       name: roles/jekyll_templates
-    #loop: "{{ ansible_objects }}"
  

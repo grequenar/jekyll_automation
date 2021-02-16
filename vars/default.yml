@@ -9,3 +9,5 @@ dir_style_check: playbooks
 
 # check_dictionary role
 dict_file: ans_doc_dictionary_correct.yml
+
+myip: 192.168.122.11

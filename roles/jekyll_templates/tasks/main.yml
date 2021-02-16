@@ -1,11 +1,17 @@
 ---
+# Remove previous posts. This is done on local, a git rm should be performed at some poing (missing rn)
 - name: delete previous content of site
   include_tasks: site_cleaning.yml 
 
+# New posts that correspond to the updated dictionary are generated
 - name: create new/updated site content
   include_tasks: site_post_building.yml
-  # loop: "{{ ansible_objects }}"
 
+# Generate de new htmls to 
+- name: serve jekyll site
+  include_tasks: site_serve.yml
+
+- name: 
   #- name: push new content to new branch of repository
   #include_tasks: site_push.yml 
 
