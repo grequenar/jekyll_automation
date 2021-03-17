@@ -1,0 +1,59 @@
+---
+ansible_objects:
+  - name: ans_iberia_linux_r_SELinux
+    title:
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role to manage SELinux policy modules
+    tags: RHEL
+    date: "2020-12-22"
+  - name: ans_ibe_win_r_
+    title: NTP role windows
+    author: Gloria???????????????????
+    repository: github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role to manage SELinux policy modules
+    tags: RHEL,
+    date: "2020-12-11"
+  - name: ans_ibe_sql_p_mariabd
+    title: mariadb role
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role for mariadb iberdrola for linux machines
+    tags: RHEL
+    date: "02-05-2018"
+  - name: ans_mex_linux_c_mariabd
+    title: mariadb role brasil
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role for mariadb iberdrola for linux machines
+    tags: RHEL
+    date: "2018-05-02"
+  - name: ans_mex_win_r_mariabd
+    title: mariadb windows role
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible
+    tags: RHEL
+    date: "2018-05-02"
+  - name: ans_agr_linux_p_SELinux
+    title: selinux role avangrid
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role for mariadb iberdrola for linux machines
+    tags: RHEL
+    date: "2018-05-02"
+  - name: ans_ibe_ora_i_mariadb
+    title: mariadb role inventory
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role for mariadb iberdrola for linux machines
+    tags: RHEL
+    date: "2018-05-02"
+  - name: ans_ibe_linux_p_mariabd
+    title: mariadb role playbook
+    author: Gloria
+    repository: https://github.com/tvallas/ansible-role-selinux
+    short_description: Ansible role for mariadb iberdrola for linux machines
+    tags: RHEL
+    date: "2018-05-02"
+
