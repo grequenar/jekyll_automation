@@ -1,0 +1,59 @@
+# Example usage: ansible-playbook -i ansiblecontroller playbooks/post_generator.yml -vvv --extra-vars "git_pass=*************"
+# This playbook checks the syntax of the dictionary
+---
+- name: generator of new content after a dictionary update
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  pre_tasks: 
+  - include_vars:
+      dir: ../vars
+  
+  tasks:
+  - include_vars:
+      file: "{{ dict_path }}/{{ dict_file }}"
+
+  - name: clone of the site repository
+    git:
+      repo: "https://github.com/grequenar/ans_documentation_v2.git"
+      # dest: "{{ site_path }}"
+      dest: /tmp/ans_documentation_v2 
+
+#  - name: override data base of site with new dictionary
+#    src: "{{ dict_path }}/{{ dict_file }}"
+#    dest: "{{ site_path }}/_data/ans_dictionary.yml" 
+#    force: yes
+
+#  - name: create new site content
+#    include_role:
+#      name: roles/jekyll_templates
+
+  - name: Register all files in the posts directory
+    find:
+#     paths: "{{ site_path }}"
+      paths: /tmp/ans_documentation_v2/_posts
+      patterns:
+        - "*.md"
+        - "*.markdown"
+        - "*.html"
+    register: files_to_delete
+
+  - name: Remove all existing posts but not the directory
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ files_to_delete.files }}"
+  
+  - name: remove the posts from git repo
+    shell:
+      cmd: git rm "{{ item.path }}"
+    with_items: "{{ files_to_delete.files }}" 
+    args:
+      chdir: /tmp/ans_documentation_v2/
+
+  - name: serve updated site to create new html content
+    shell: bundle exec jekyll build --destination /home/iberdrola_installer/prueba
+    args:
+      chdir: /tmp/ans_documentation_v2/
+

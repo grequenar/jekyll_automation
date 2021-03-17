@@ -14,3 +14,8 @@
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ files_to_delete.files }}"
+
+- name: remove the posts from git repo
+  shell:
+    cmd: git rm "{{ item.path }}"
+  with_items: "{{ files_to_delete.files }}" 

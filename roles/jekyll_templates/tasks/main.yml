@@ -11,9 +11,10 @@
 - name: serve jekyll site
   include_tasks: site_serve.yml
 
-- name: 
-  #- name: push new content to new branch of repository
-  #include_tasks: site_push.yml 
+#  Jenkins? or using ansible module git-acp?
+#  git-acp hace el push pero no se como borrar los posts
+#- name: push new content to new branch of repository
+## include_tasks: site_push.yml 
 
 
 

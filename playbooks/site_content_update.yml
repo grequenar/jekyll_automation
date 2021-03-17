@@ -28,4 +28,7 @@
   - name: create new site content
     include_role:
       name: roles/jekyll_templates
- 
+
+# - name: override old site content on apache server
+# new play with apache server as host & copy module? or
+# issue scp command 
