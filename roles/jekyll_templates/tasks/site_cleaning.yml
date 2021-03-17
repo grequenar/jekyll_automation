@@ -17,5 +17,8 @@
 
 - name: remove the posts from git repo
   shell:
-    cmd: git rm "{{ item.path }}"
-  with_items: "{{ files_to_delete.files }}" 
+      cmd: git rm "{{ item.path }}"
+    with_items: "{{ files_to_delete.files }}"
+    args:
+      chdir: /tmp/ans_documentation_v2/
+ 
